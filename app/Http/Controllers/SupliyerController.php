@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Supliyer;
 use Illuminate\Http\Request;
 
-class supliyer extends Controller
+class supliyerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,10 @@ class supliyer extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        // return view('admin.index');
+       $data=Supliyer::all();
+        return view('admin.index',compact('data'));
+
     }
 
     /**
@@ -24,6 +27,7 @@ class supliyer extends Controller
     public function create()
     {
         //
+        return view ('admin.create');
     }
 
     /**
@@ -34,7 +38,16 @@ class supliyer extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,
+            [
+                'nama_supliyer'=>'min:3|required',
+                'alamat'=>'min:10|required',
+                'no_tlp'=>'min:10',
+            ]
+        );
+       $data=$request->all();
+       Supliyer::create($data);
+       return redirect()->route('supliyer.index');
     }
 
     /**
@@ -56,7 +69,11 @@ class supliyer extends Controller
      */
     public function edit($id)
     {
-        //
+        // $data=Supliyer::where('supliyer_id',$id);
+        $data=Supliyer::findOrFail($id);
+        return view('admin.edit',compact('data'));
+
+
     }
 
     /**
@@ -68,7 +85,17 @@ class supliyer extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // return $request->all();
+        $data=Supliyer::findOrFail($id);
+        $this->validate($request,
+        [
+            'nama_supliyer'=>'string|min:3|required',
+            'alamat'=>'required|min:6',
+            'no_tlp'=>'required'
+        ]);
+
+        $data->update($request->all());
+        return redirect()->route('supliyer.index');
     }
 
     /**
@@ -79,6 +106,10 @@ class supliyer extends Controller
      */
     public function destroy($id)
     {
-        //
+        $id= Supliyer::where('id_supliyer',$id);
+        $id->delete();
+        // return redirect()->route('supliyer.index');
+        return redirect('supliyer')->with('success', 'Data telah di hapus');
+
     }
 }

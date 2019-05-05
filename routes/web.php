@@ -19,4 +19,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-route::resource('/supliyer','supliyer');
+route::resource('/supliyer','SupliyerController');
