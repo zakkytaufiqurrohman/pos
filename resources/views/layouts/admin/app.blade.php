@@ -72,6 +72,11 @@
           <i class="fas fa-fw fa-table"></i>
           <span>category</span></a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('barang.index')}}">
+            <i class="fas fa-fw fa-table"></i>
+            <span>barang</span></a>
+      </li>
     </ul>
 
     <div id="content-wrapper">

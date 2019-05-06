@@ -21,6 +21,7 @@ class CreateBarangsTable extends Migration
             $table->foreign('id_category')->references('id_category')->on('categories')->onDelete('cascade');
             $table->string('nama_barang');
             $table->double('stok');
+            $table->double('harga');
             $table->timestamps();
         });
     }
