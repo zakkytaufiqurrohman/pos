@@ -77,6 +77,10 @@ class BarangController extends Controller
     public function edit($id)
     {
         //
+        $barang=barang::findOrFail($id);
+        $category=categorie::all();
+        $supliyer=supliyer::all();
+        return view('admin.barang.edit',compact('barang','category','supliyer'));
     }
 
     /**
@@ -89,6 +93,7 @@ class BarangController extends Controller
     public function update(Request $request, $id)
     {
         //
+        return $request->all();
     }
 
     /**
