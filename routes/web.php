@@ -22,3 +22,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 route::resource('/supliyer','SupliyerController');
 route::resource('/category','CategoryController');
 Route::resource('/barang','BarangController');
+Route::resource('/penjualan','PenjualanController');
+Route::get('/search','SearchController@search');

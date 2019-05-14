@@ -1,13 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\barang;
-use App\categorie;
-use App\supliyer;
-use Illuminate\Http\Request;
-use DB;
 
-class BarangController extends Controller
+use Illuminate\Http\Request;
+
+class PenjualanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +14,7 @@ class BarangController extends Controller
     public function index()
     {
         //
-        $barang=barang::all();
-
-        return view('admin.barang.index',compact('barang'));
-
-
+        return view('admin.penjualan.index');
     }
 
     /**
@@ -32,9 +25,6 @@ class BarangController extends Controller
     public function create()
     {
         //
-        $category=categorie::all();
-        $supliyer=supliyer::all();
-        return view ('admin.barang.create',compact('category','supliyer'));
     }
 
     /**
@@ -46,16 +36,6 @@ class BarangController extends Controller
     public function store(Request $request)
     {
         //
-        $this->validate($request,[
-            'id_supliyer'=>'required',
-            'id_category'=>'required',
-            'nama_barang'=>'required',
-            'stok'=>'required',
-            'harga'=>'required',
-        ]);
-        barang::create($request->all());
-        return redirect()->route('barang.index');
-
     }
 
     /**
@@ -78,10 +58,6 @@ class BarangController extends Controller
     public function edit($id)
     {
         //
-        $barang=barang::findOrFail($id);
-        $category=categorie::all();
-        $supliyer=supliyer::all();
-        return view('admin.barang.edit',compact('barang','category','supliyer'));
     }
 
     /**
@@ -94,16 +70,6 @@ class BarangController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $data=barang::findOrFail($id);
-        $this->validate($request,[
-            'id_supliyer'=>'required',
-            'id_category'=>'required',
-            'nama_barang'=>'string:min:3',
-            'stok'=>'required|int',
-            'harga'=>'required|int'
-        ]);
-        $data->update($request->all());
-        return redirect()->route('barang.index');
     }
 
     /**
@@ -114,10 +80,6 @@ class BarangController extends Controller
      */
     public function destroy($id)
     {
-        $data=barang::findOrFail($id);
-        $data->delete();
-        return redirect()->route('barang.index');
+        //
     }
-
-
 }

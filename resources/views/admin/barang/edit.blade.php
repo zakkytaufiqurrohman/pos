@@ -47,7 +47,7 @@
                             <label for="id_category">category</label>
                             <select name="id_category" id="category" >
                                 @foreach ($category as $item)
-                                    <option value="{{$item->id_category}}" {{ $barang->id_barang===$item->id_category ? 'selected' : null}}>{{$item->nama_category}}</option>
+                                    <option value="{{$item->id_category}}" {{ $item->id_category == $barang->id_barang ? 'selected' : null}}>{{$item->nama_category}}</option>
                                 @endforeach
 
                             </select>
@@ -57,7 +57,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="name">stok</label>
-                        <input type="text" id="alamat" name="stok" class="form-control{{ $errors->has('stok') ? ' is-invalid' : '' }}" name="stok" value="{{ old('stok') }}" required autofocus>
+                        <input type="text" id="alamat" name="stok" class="form-control{{ $errors->has('stok') ? ' is-invalid' : '' }}" name="stok" value="{{ $barang->stok}}" required autofocus>
                         @if ($errors->has('stok'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('stok') }}</strong>
@@ -69,7 +69,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="name">harga</label>
-                        <input type="text" id="harga" name="harga" class="form-control{{ $errors->has('harga') ? ' is-invalid' : '' }}" name="harga" value="{{ old('harga') }}" required autofocus>
+                        <input type="text" id="harga" name="harga" class="form-control{{ $errors->has('harga') ? ' is-invalid' : '' }}" name="harga" value="{{ $barang->harga}}" required autofocus>
                         @if ($errors->has('harga'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('harga') }}</strong>

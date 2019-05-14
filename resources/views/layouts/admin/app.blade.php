@@ -10,7 +10,9 @@
   <meta name="author" content="">
 
   <title>SB Admin - Dashboard</title>
-
+  @yield('asset-top')
+  {{-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> --}}
   <!-- Custom fonts for this template-->
   <link href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
 
@@ -76,6 +78,11 @@
         <a class="nav-link" href="{{ route('barang.index')}}">
             <i class="fas fa-fw fa-table"></i>
             <span>barang</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('penjualan.index')}}">
+            <i class="fas fa-fw fa-table"></i>
+            <span>penjualan</span></a>
       </li>
     </ul>
 
