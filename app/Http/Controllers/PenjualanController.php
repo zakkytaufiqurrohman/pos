@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\barang;
 use Illuminate\Http\Request;
 
 class PenjualanController extends Controller
@@ -14,7 +14,8 @@ class PenjualanController extends Controller
     public function index()
     {
         //
-        return view('admin.penjualan.index');
+        $barang=barang::all();
+        return view('admin.penjualan.index',compact('barang'));
     }
 
     /**
@@ -25,6 +26,7 @@ class PenjualanController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
@@ -36,6 +38,7 @@ class PenjualanController extends Controller
     public function store(Request $request)
     {
         //
+        return $request->all();
     }
 
     /**
